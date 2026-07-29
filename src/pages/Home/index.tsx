@@ -17,13 +17,13 @@ export function HomePage() {
           variants={fadeInScaleUp}
           className="text-2xl font-semibold tracking-tight leading-10"
         >
-          Transfiere archivos entre tus dispositivos
+          Transfiere archivos en tiempo real
         </motion.h2>
         <motion.p
           variants={fadeInScaleUp}
           className="text-sm text-foreground/80"
         >
-          Nada sale de tu red local. Privado, seguro, rápido y sin límites
+          ¡Seguro, rápido y sin límites! Usando tu red local o internet
         </motion.p>
       </div>
 

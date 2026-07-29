@@ -33,7 +33,7 @@ export function RemotePeerIdForm({
             id="remoteId"
             variant="secondary"
             className="mb-4"
-            maxLength={5}
+            maxLength={8}
             pattern={REGEXP_ONLY_DIGITS}
             value={remotePeerId}
             onChange={setRemotePeerId}
@@ -46,10 +46,16 @@ export function RemotePeerIdForm({
               <InputOTP.Slot index={3} />
               <InputOTP.Slot index={4} />
             </InputOTP.Group>
+            <InputOTP.Separator />
+            <InputOTP.Group>
+              <InputOTP.Slot index={5} />
+              <InputOTP.Slot index={6} />
+              <InputOTP.Slot index={7} />
+            </InputOTP.Group>
           </InputOTP>
 
           {!isConnected ? (
-            <Button isDisabled={remotePeerId.length != 5} onPress={onConnect}>
+            <Button isDisabled={remotePeerId.length != 8} onPress={onConnect}>
               {connectionStatus === "connecting" ? "Conectadno..." : "Conectar"}
             </Button>
           ) : (
