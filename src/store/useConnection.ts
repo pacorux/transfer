@@ -2,6 +2,7 @@ import { create } from "zustand";
 
 interface ConnectionState {
   mode: "send" | "receive";
+  setMode: (mode: "send" | "receive") => void;
   peerId: string | null;
   generatePeerId: () => void;
   remotePeerId: string | null;
@@ -11,6 +12,9 @@ interface ConnectionState {
 
 export const useConnection = create<ConnectionState>((set) => ({
   mode: "send",
+  setMode: (mode) => {
+    set({ mode });
+  },
   peerId: null,
   generatePeerId: () => {
     set({ peerId: Math.floor(10000 + Math.random() * 90000).toString() });
