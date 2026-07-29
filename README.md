@@ -7,12 +7,16 @@
 
 A React-based web application for secure file sharing across your local network.
 
+Demo: https://transfer.pacorux.es/
+
+![Ejemplo](/docs/example.jpeg)
+
 ## Requirements
 
 Before you begin, ensure you have the following installed:
 
-* [Node.js](https://nodejs.org) (v18 or higher)
-* Any package manager of your choice (`npm`, `pnpm` or `yarn`)
+- [Node.js](https://nodejs.org) (v18 or higher)
+- Any package manager of your choice (`npm`, `pnpm` or `yarn`)
 
 ## Quick Start
 
