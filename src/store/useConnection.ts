@@ -5,9 +5,14 @@ interface ConnectionState {
   setMode: (mode: "send" | "receive") => void;
   peerId: string | null;
   generatePeerId: () => void;
-  remotePeerId: string | null;
+  remotePeerId: string;
   setRemotePeerId: (id: string) => void;
   isConnected: boolean;
+  setIsConnected: (isConnected: boolean) => void;
+  connectionStatus: "disconnected" | "connecting" | "connected";
+  setConnectionStatus: (
+    connectionStatus: "disconnected" | "connecting" | "connected",
+  ) => void;
 }
 
 export const useConnection = create<ConnectionState>((set) => ({
@@ -19,9 +24,12 @@ export const useConnection = create<ConnectionState>((set) => ({
   generatePeerId: () => {
     set({ peerId: Math.floor(10000 + Math.random() * 90000).toString() });
   },
-  remotePeerId: null,
+  remotePeerId: "",
   setRemotePeerId: (id) => {
     set({ remotePeerId: id });
   },
   isConnected: false,
+  setIsConnected: (isConnected) => set({ isConnected }),
+  connectionStatus: "disconnected",
+  setConnectionStatus: (connectionStatus) => set({ connectionStatus }),
 }));
