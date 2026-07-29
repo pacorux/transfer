@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import { parentContainer } from "./animations/variants";
 import { Navbar } from "./components/layout/Navbar";
 import { Background } from "./components/layout/Background";
+import { Toast } from "@heroui/react";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -15,6 +16,8 @@ export default function Layout({ children }: LayoutProps) {
       initial="hidden"
       animate="show"
     >
+      <Toast.Provider placement="top" />
+
       <Navbar />
 
       <main className="flex-1 w-full md:p-4 md:pt-0">
