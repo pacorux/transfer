@@ -21,6 +21,12 @@ export function Navbar() {
             Transfer
           </h2>
         </Link>
+        <Link
+          href="/about"
+          className="text-sm text-foreground/60 hover:text-accent transition-colors"
+        >
+          Sobre
+        </Link>
       </div>
     </nav>
   );
