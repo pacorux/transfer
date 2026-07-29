@@ -5,7 +5,7 @@
 [![Node.js](https://img.shields.io/badge/Node.js-18+-339933?style=flat&logo=node.js)](https://nodejs.org)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
-A React-based web application for secure file sharing across your local network.
+A React-based web application for secure file sharing.
 
 Demo: https://transfer.pacorux.es/
 
@@ -34,4 +34,4 @@ npm run dev
 
 ## License
 
-MIT
+MIT - Feel free to use this code as inspiration for your own projects.
