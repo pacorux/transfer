@@ -37,35 +37,45 @@ export function useConnectionManager({ onData }: UseConnectionManagerOptions) {
   useEffect(() => {
     if (!peerId) return;
 
-    const peer = new Peer(peerId);
+    try {
+      const peer = new Peer(peerId);
 
-    peer.on("connection", (conn: any) => {
-      connectionRef.current = conn;
-      setupConnectionEvents(conn);
-      toast("Conexión entrante establecida", {
-        variant: "success",
-        description: `Conexión entre ${peerId} y ${remotePeerId} exitosa`,
+      peer.on("open", (id) => {
+        console.log("Mi ID:", id);
       });
-    });
 
-    peer.on("error", (error: any) => {
-      console.error("Error en PeerJS:", error);
-      setConnectionStatus("disconnected");
-      toast("Los dispositivos no se han podido encontrar", {
-        variant: "danger",
-        description:
-          "Ambos deben tener conexión a internet en la fase inicial para poderse encontrar",
+      peer.on("connection", (conn: any) => {
+        connectionRef.current = conn;
+        setupConnectionEvents(conn);
+        console.log(conn);
+        toast("Conexión entrante establecida", {
+          variant: "success",
+          description: `Conexión entre ${peerId} y ${conn.peer} exitosa`,
+        });
       });
-    });
 
-    peerRef.current = peer;
+      peer.on("error", (error: any) => {
+        console.error("Error en PeerJS:", error);
+        setConnectionStatus("disconnected");
+        toast("Los dispositivos no se han podido encontrar", {
+          variant: "danger",
+          description:
+            "Ambos deben tener conexión a internet en la fase inicial para poderse encontrar",
+        });
+      });
 
-    return () => {
-      clearConnectionTimeout();
-      peer.destroy();
-      peerRef.current = null;
-      connectionRef.current = null;
-    };
+      peerRef.current = peer;
+
+      return () => {
+        clearConnectionTimeout();
+        peer.destroy();
+        peerRef.current = null;
+        connectionRef.current = null;
+      };
+    } catch (error) {
+      console.error("Error al inicializar PeerJS:", error);
+      toast("Error de inicialización", { variant: "danger" });
+    }
   }, [peerId]);
 
   const setupConnectionEvents = useCallback((conn: any) => {
